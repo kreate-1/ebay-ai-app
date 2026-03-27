@@ -1,8 +1,13 @@
 
+const API_URL =
+  window.location.hostname === "localhost"
+    ? "http://localhost:3000"
+    : "https://ebay-ai-app.onrender.com";
+
 let allCategories = {};
 
 async function loadCategories() {
-  const res = await fetch("https://ebay-ai-app.onrender.com/categories");
+  const res = await fetch(`${API_URL}/categories`);
   allCategories = await res.json();
 }
 
@@ -136,7 +141,7 @@ generateBtn.addEventListener("click", async () => {
     // 🔄 STEP 3
     loading.innerText = "📦 Fetching item specifics...";
 
-    const res = await fetch("https://ebay-ai-app.onrender.com/generate-from-image", {
+    const res = await fetch(`${API_URL}/generate-from-image`, {
       method: "POST",
       body: formData
     });
