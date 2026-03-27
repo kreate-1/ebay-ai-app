@@ -2,7 +2,7 @@
 let allCategories = {};
 
 async function loadCategories() {
-  const res = await fetch("http://localhost:3000/categories");
+  const res = await fetch("https://ebay-ai-app.onrender.com/categories");
   allCategories = await res.json();
 }
 
@@ -136,7 +136,7 @@ generateBtn.addEventListener("click", async () => {
     // 🔄 STEP 3
     loading.innerText = "📦 Fetching item specifics...";
 
-    const res = await fetch("http://localhost:3000/generate-from-image", {
+    const res = await fetch("https://ebay-ai-app.onrender.com/generate-from-image", {
       method: "POST",
       body: formData
     });
